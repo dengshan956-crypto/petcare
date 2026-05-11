@@ -126,6 +126,12 @@ function getTodayInputValue() {
   return today.toISOString().slice(0, 10);
 }
 
+function formatVisitDate(visitDate: string) {
+  const [year, month, day] = visitDate.split("-");
+  if (!year || !month || !day) return visitDate;
+  return `${year}年${month}月${day}日`;
+}
+
 function PawIcon() {
   return (
     <svg viewBox="0 0 24 24">
@@ -190,7 +196,9 @@ function BookingForm({
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     onToast(
-      `已收到预约：${petNames[petType]} · ${serviceNames[serviceType]} · ${visitDate} ${visitTime}，预估 ${price} 元。`
+      `已收到预约：${petNames[petType]} · ${serviceNames[serviceType]} · ${formatVisitDate(
+        visitDate
+      )} ${visitTime}，预估 ${price} 元。`
     );
     setPetType("cat");
     setServiceType("bath");
