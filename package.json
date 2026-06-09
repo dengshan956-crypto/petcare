@@ -9,6 +9,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.102.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
